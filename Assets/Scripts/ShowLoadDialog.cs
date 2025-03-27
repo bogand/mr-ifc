@@ -8,18 +8,18 @@ public class ShowLoadDialog : MonoBehaviour
 {
 
     public AttachToController attachToController;
+
     private void Awake()
-        {
-    #if !UNITY_EDITOR && UNITY_ANDROID
+    {
+#if !UNITY_EDITOR && UNITY_ANDROID
     typeof(SimpleFileBrowser.FileBrowserHelpers).GetField("m_shouldUseSAF", BindingFlags.NonPublic | BindingFlags.Static).SetValue(null, (bool?)false);
 #endif
     
     
-}
-
+    }
 void Start()
 {
-    #if !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && UNITY_ANDROID
     using var buildVersion = new AndroidJavaClass("android.os.Build$VERSION");
     using var buildCodes = new AndroidJavaClass("android.os.Build$VERSION_CODES");
 //Check SDK version > 29
@@ -109,9 +109,9 @@ IEnumerator ShowLoadDialogCoroutine()
         if (File.Exists(FileBrowser.Result[0]))
         {
             GltfLoader gltfLoader = new GltfLoader();
-            GameObject gltfObject = gltfLoader.ReturnLoadObject(FileBrowser.Result[0]);
+            gltfLoader.LoadObject(FileBrowser.Result[0]);
             //GameObject gltfObject = gltfLoader.ReturnLoadObject(FileBrowser.Result[0]);
-            attachToController.currentObject = gltfObject;
+            //attachToController.currentObject = gltfObject;
         }
         else
         {

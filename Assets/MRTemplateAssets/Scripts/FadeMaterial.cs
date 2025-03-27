@@ -12,8 +12,15 @@ public class FadeMaterial : MonoBehaviour
     public float fadeSpeed;
 
     Coroutine m_FadeCoroutine;
+
+    void Start()
+    {
+        if (!Application.isEditor)
+        {
+            FadeOnRuntime();
+        }
+    }
     
-    [Conditional("UNITY_RUNTIME")]
     private void FadeOnRuntime()
     {
         FadeSkybox(false);
