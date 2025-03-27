@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 
 public class FadeMaterial : MonoBehaviour
@@ -10,6 +12,12 @@ public class FadeMaterial : MonoBehaviour
     public float fadeSpeed;
 
     Coroutine m_FadeCoroutine;
+    
+    [Conditional("UNITY_RUNTIME")]
+    private void FadeOnRuntime()
+    {
+        FadeSkybox(false);
+    }
 
     public void FadeSkybox(bool visible)
     {

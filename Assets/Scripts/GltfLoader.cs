@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using GLTFast;
 public class GltfLoader : MonoBehaviour
@@ -39,6 +40,17 @@ public class GltfLoader : MonoBehaviour
         } else {
             Debug.LogError("Loading glTF failed!");
         }
-
     }
+    
+    public GameObject ReturnLoadObject(string path)
+    {
+        var gameObj = new GameObject("root");
+        gameObj.SetActive(false);
+        gameObj.hideFlags = HideFlags.HideInHierarchy;
+        var gltf = new GltfImport();
+        gltf.LoadFile(path);
+        gltf.InstantiateMainSceneAsync(gameObj.transform);
+        return gameObj;
+    }
+    
 }

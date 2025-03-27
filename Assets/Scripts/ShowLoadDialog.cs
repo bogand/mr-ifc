@@ -6,6 +6,8 @@ using System.Reflection;
 
 public class ShowLoadDialog : MonoBehaviour
 {
+
+    public AttachToController attachToController;
     private void Awake()
         {
     #if !UNITY_EDITOR && UNITY_ANDROID
@@ -107,7 +109,9 @@ IEnumerator ShowLoadDialogCoroutine()
         if (File.Exists(FileBrowser.Result[0]))
         {
             GltfLoader gltfLoader = new GltfLoader();
-            gltfLoader.LoadObject(FileBrowser.Result[0]);
+            GameObject gltfObject = gltfLoader.ReturnLoadObject(FileBrowser.Result[0]);
+            //GameObject gltfObject = gltfLoader.ReturnLoadObject(FileBrowser.Result[0]);
+            attachToController.currentObject = gltfObject;
         }
         else
         {
