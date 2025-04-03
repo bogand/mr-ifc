@@ -109,9 +109,10 @@ IEnumerator ShowLoadDialogCoroutine()
         if (File.Exists(FileBrowser.Result[0]))
         {
             GltfLoader gltfLoader = new GltfLoader();
-            gltfLoader.LoadObject(FileBrowser.Result[0]);
+            //gltfLoader.LoadObject(FileBrowser.Result[0]);
             //GameObject gltfObject = gltfLoader.ReturnLoadObject(FileBrowser.Result[0]);
             //attachToController.currentObject = gltfObject;
+            gltfLoader.LoadGltfToGameObject(FileBrowser.Result[0]);
         }
         else
         {

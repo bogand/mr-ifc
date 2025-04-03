@@ -53,4 +53,27 @@ public class GltfLoader : MonoBehaviour
         return gameObj;
     }
     
+    public async Task<GameObject> LoadGltfToGameObject(string path)
+    {
+        var gltf = new GltfImport();
+        bool success = await gltf.Load(path);
+
+        if (!success)
+        {
+            Debug.LogError("GLTF load failed");
+            return null;
+        }
+
+        GameObject root = new GameObject("GLTF_Model");
+        bool instSuccess = await gltf.InstantiateMainSceneAsync(root.transform);
+
+        if (!instSuccess)
+        {
+            Debug.LogError("GLTF instantiation failed");
+            return null;
+        }
+
+        return root;
+    }
+    
 }
