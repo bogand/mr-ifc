@@ -1,6 +1,9 @@
 using System.Threading.Tasks;
 using UnityEngine;
 using GLTFast;
+using MixedReality.Toolkit.SpatialManipulation;
+using Unity.XR.CoreUtils;
+
 public class GltfLoader : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,7 +39,6 @@ public class GltfLoader : MonoBehaviour
                 await gltf.InstantiateSceneAsync(transform, sceneId);
             }
             
-            gltf.Dispose();
         } else {
             Debug.LogError("Loading glTF failed!");
         }
@@ -57,21 +59,51 @@ public class GltfLoader : MonoBehaviour
     {
         var gltf = new GltfImport();
         bool success = await gltf.Load(path);
-
+        
         if (!success)
         {
             Debug.LogError("GLTF load failed");
             return null;
         }
-
+        
         GameObject root = new GameObject("GLTF_Model");
         bool instSuccess = await gltf.InstantiateMainSceneAsync(root.transform);
-
+        GameObject model = root.transform.GetChild(0).gameObject;
+        model.AddComponent<MeshCollider>();
+        model.AddComponent<ObjectManipulator>();
+        
+        ObjectContainer.Instance.AddObject(model);
+        
         if (!instSuccess)
         {
             Debug.LogError("GLTF instantiation failed");
             return null;
         }
+
+        return root;
+    }
+    
+    public async Task<GameObject> LoadGltfToAttachToController(string path)
+    {
+        var gltf = new GltfImport();
+        bool success = await gltf.Load(path);
+        
+        if (!success)
+        {
+            Debug.LogError("GLTF load failed");
+            return null;
+        }
+        
+        GameObject root = new GameObject("GLTF_Model");
+        bool instSuccess = await gltf.InstantiateMainSceneAsync(root.transform);
+        
+        if (!instSuccess)
+        {
+            Debug.LogError("GLTF instantiation failed");
+            return null;
+        }
+        
+        gltf.Dispose();
 
         return root;
     }
