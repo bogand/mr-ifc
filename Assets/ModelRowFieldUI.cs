@@ -1,6 +1,9 @@
 using System;
+using MixedReality.Toolkit;
+using MixedReality.Toolkit.SpatialManipulation;
 using TMPro;
 using UnityEngine;
+using static MixedReality.Toolkit.TransformFlags;
 
 public class ModelRowFieldUI : MonoBehaviour
 {
@@ -20,7 +23,9 @@ public class ModelRowFieldUI : MonoBehaviour
         {
             label.text = model.name;
         }
+
         this.OnObjectDeleted += ObjectContainer.Instance.OnObjectDeleted;
+        SetMoveFlag();
     }
 
     public void Delete()
@@ -29,6 +34,27 @@ public class ModelRowFieldUI : MonoBehaviour
         this.OnObjectDeleted -= ObjectContainer.Instance.OnObjectDeleted;
         Destroy(gameObject);
     }
+    public void SetMoveFlag()
+    {
+        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+        model.gameObject.GetComponent<ObjectManipulator>().AllowedManipulations = TransformFlags.Move;
+        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+    }
+
+    public void SetRotateFlag()
+    {
+        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+        model.gameObject.GetComponent<ObjectManipulator>().AllowedManipulations = TransformFlags.Rotate;
+        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+    }
+
+    public void SetScaleFlag()
+    {
+        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+        model.gameObject.GetComponent<ObjectManipulator>().AllowedManipulations = TransformFlags.Scale;
+        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+    }
+    
     
     public void SetName(string name)
     {
