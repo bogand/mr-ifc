@@ -113,8 +113,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7994735982384235892}
   - component: {fileID: 598055184538165487}
+  - component: {fileID: 3790694214693136227}
   m_Layer: 5
-  m_Name: ModelField
+  m_Name: ModelRowFieldUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +149,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846984020898625930}
   m_CullTransparentMesh: 0
+--- !u!114 &3790694214693136227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846984020898625930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fd6ab1cc27ddf46bdec1fcc8ab42bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 4926557565497787091}
+  model: {fileID: 0}
 --- !u!1 &4265324077398367458
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +495,7 @@ GameObject:
   - component: {fileID: 8906975815946415021}
   - component: {fileID: 1731352194332642140}
   m_Layer: 5
-  m_Name: Text Poke Button
+  m_Name: DeleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -559,9 +574,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShowLoadDialog, Assembly-CSharp
-        m_MethodName: ShowLoadDialogOnClick
+      - m_Target: {fileID: 3790694214693136227}
+        m_TargetAssemblyTypeName: ModelMenuField, Assembly-CSharp
+        m_MethodName: Delete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

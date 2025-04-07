@@ -85,7 +85,7 @@ void Start()
     //                         FileBrowser.PickMode.Folders, false, null, null, "Select Folder", "Select" );
 
     // Example 3: Show a select file dialog using coroutine approach
-    StartCoroutine(ShowLoadDialogCoroutine());
+    //StartCoroutine(ShowLoadDialogCoroutine());
 }
 
 public void ShowLoadDialogOnClick()

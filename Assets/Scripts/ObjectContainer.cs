@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectContainer : MonoBehaviour
 {
     public static ObjectContainer Instance {get; private set;}
+    public event EventHandler<List<GameObject>> OnListChanged;
    
     [SerializeField] private List<GameObject> loadedObjects = new List<GameObject>();
     private void Awake()
@@ -16,20 +17,39 @@ public class ObjectContainer : MonoBehaviour
         }
         
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Opcjonalnie, jeśli chcesz, żeby singleton przetrwał zmianę sceny
+        DontDestroyOnLoad(gameObject);
     }
-    
-    public void AddObject(GameObject obj)
+
+    private void AddObject(GameObject obj)
     {
         loadedObjects.Add(obj);
+        OnListChanged?.Invoke(this, loadedObjects);
         Debug.Log($"Object added: {obj.name}");
     }
 
-    public void RemoveObject(GameObject obj)
+    private void RemoveObject(GameObject obj)
     {
         loadedObjects.Remove(obj);
-        Destroy(transform.parent.gameObject);
+        if (obj.transform.parent != null && obj.transform.parent.name == "GLTF_Model")
+        {
+            Destroy(obj.transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(obj.transform.gameObject);
+        }
+        OnListChanged?.Invoke(this, loadedObjects);
         Debug.Log($"Object removed: {obj.name}");
+    }
+
+    public void OnObjectDeleted(object sender,GameObject obj)
+    {
+        RemoveObject(obj);
+    }
+
+    public void OnObjectCreated(object sender, GameObject obj)
+    {
+        AddObject(obj);
     }
 
     public List<GameObject> GetAllObjectsList()

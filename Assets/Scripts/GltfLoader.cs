@@ -71,8 +71,7 @@ public class GltfLoader : MonoBehaviour
         GameObject model = root.transform.GetChild(0).gameObject;
         model.AddComponent<MeshCollider>();
         model.AddComponent<ObjectManipulator>();
-        
-        ObjectContainer.Instance.AddObject(model);
+        model.AddComponent<Model>();
         
         if (!instSuccess)
         {

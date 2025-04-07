@@ -5,20 +5,49 @@ using UnityEngine;
 
 public class ContentMenuUI : MonoBehaviour
 {
-    [SerializeField] private List<ModelMenuField> menuFields;
-
+    [SerializeField] private GameObject modelRowFieldUIPrefab;
+    [SerializeField] private List<ModelRowFieldUI> menuFields;
+    
     private void Start()
     {
-        menuFields = GetComponentsInChildren<ModelMenuField>().ToList();
+        ObjectContainer.Instance.OnListChanged += OnListChanged;
+        menuFields = GetComponentsInChildren<ModelRowFieldUI>().ToList();
     }
 
-    public void AddMenuField(ModelMenuField menuField)
+    public void OnListChanged(object sender,List<GameObject> list)
     {
-        menuFields.Add(menuField);
+        UpdateUI(list);
     }
 
-    public void RemoveMenuField(ModelMenuField menuField)
+
+    private void UpdateUI(List<GameObject> list)
     {
-        menuFields.Remove(menuField);
+        List<GameObject> currentObjects = list;
+        Transform menuTransform = this.transform;
+        foreach (Transform modelMenuField in menuTransform)
+        {
+            if (modelMenuField.gameObject.GetComponent<ModelRowFieldUI>())
+            {
+                Destroy(modelMenuField.gameObject);
+            }
+        }
+
+        foreach (var obj in currentObjects)
+        {
+            GameObject modelField = Instantiate(modelRowFieldUIPrefab, menuTransform);
+            ModelRowFieldUI modelRowFieldUI = modelField.GetComponent<ModelRowFieldUI>();
+            modelRowFieldUI.init(obj);
+        }
+        
+    }
+    
+    public void AddMenuField(ModelRowFieldUI rowFieldUI)
+    {
+        menuFields.Add(rowFieldUI);
+    }
+
+    public void RemoveMenuField(ModelRowFieldUI rowFieldUI)
+    {
+        menuFields.Remove(rowFieldUI);
     }
 }
