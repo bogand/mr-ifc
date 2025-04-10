@@ -25,7 +25,6 @@ public class ModelRowFieldUI : MonoBehaviour
         }
 
         this.OnObjectDeleted += ObjectContainer.Instance.OnObjectDeleted;
-        SetMoveFlag();
     }
 
     public void Delete()

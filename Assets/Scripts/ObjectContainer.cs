@@ -24,7 +24,7 @@ public class ObjectContainer : MonoBehaviour
     {
         loadedObjects.Add(obj);
         OnListChanged?.Invoke(this, loadedObjects);
-        Debug.Log($"Object added: {obj.name}");
+        //Debug.Log($"Object added: {obj.name}");
     }
 
     private void RemoveObject(GameObject obj)
