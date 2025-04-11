@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 223000012645506472, guid: da442b8e697234fd9819c97fd8a6e0f5, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224000010015050490, guid: da442b8e697234fd9819c97fd8a6e0f5, type: 3}
       propertyPath: m_AnchorMax.x

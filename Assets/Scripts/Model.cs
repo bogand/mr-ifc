@@ -1,6 +1,11 @@
 using System;
+using MixedReality.Toolkit;
 using MixedReality.Toolkit.SpatialManipulation;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Animations;
+using UnityEngine.XR.ARFoundation;
+using Axis = UnityEngine.Animations.Axis;
 
 public class Model : MonoBehaviour
 {
@@ -11,7 +16,7 @@ public class Model : MonoBehaviour
 
     void Awake()
     {
-        boundsVisualPrefab = (GameObject)Resources.Load(_pathToBoundsVisualsPrefab);
+        boundsVisualPrefab = AssetDatabase.LoadAssetAtPath(_pathToBoundsVisualsPrefab, typeof(GameObject)) as GameObject;
         Debug.Log(boundsVisualPrefab);
     }
     void Start()
@@ -31,14 +36,19 @@ public class Model : MonoBehaviour
 
     void AddComponents()
     {
+        if (!this.gameObject.GetComponent<MeshCollider>())
+        {
+            this.gameObject.AddComponent<MeshCollider>();
+        }
+        
         if (!this.gameObject.GetComponent<ObjectManipulator>())
         {
             this.gameObject.AddComponent<ObjectManipulator>();
         }
-
-        if (!this.gameObject.GetComponent<MeshCollider>())
+        
+        if (!this.gameObject.GetComponent<ARAnchor>())
         {
-            this.gameObject.AddComponent<MeshCollider>();
+            this.gameObject.AddComponent<ARAnchor>();
         }
 
         if (!this.gameObject.GetComponent<BoundsControl>())
@@ -47,5 +57,42 @@ public class Model : MonoBehaviour
             boundsControl.BoundsVisualsPrefab = boundsVisualPrefab;
             boundsControl.ConstraintsManager = this.GetComponent<ConstraintManager>();
         }
+
+        if (!this.gameObject.GetComponent<MinMaxScaleConstraint>())
+        {
+            this.gameObject.AddComponent<MinMaxScaleConstraint>();
+            this.gameObject.GetComponent<MinMaxScaleConstraint>().enabled = false;
+        }
+        
+        if (!this.gameObject.GetComponent<RotationAxisConstraint>())
+        {
+            this.gameObject.AddComponent<RotationAxisConstraint>();
+            this.gameObject.AddComponent<RotationAxisConstraint>().ConstraintOnRotation = AxisFlags.XAxis + (int)AxisFlags.YAxis;
+            this.gameObject.GetComponent<RotationAxisConstraint>().enabled = false;
+        }
+        
+        if (!this.gameObject.GetComponent<MoveAxisConstraint>())
+        {
+            this.gameObject.AddComponent<MoveAxisConstraint>();
+            this.gameObject.GetComponent<MoveAxisConstraint>().enabled = false;
+        }
+    }
+
+    public void ApplyScaleConstraint()
+    {
+        bool active = this.gameObject.GetComponent<MinMaxScaleConstraint>().enabled;
+        this.gameObject.GetComponent<MinMaxScaleConstraint>().enabled = !active;
+    }
+    
+    public void ApplyRotationConstraint()
+    {
+        bool active = this.gameObject.GetComponent<RotationAxisConstraint>().enabled;
+        this.gameObject.GetComponent<RotationAxisConstraint>().enabled = !active;
+    }
+    
+    public void ApplyMoveConstraint()
+    {
+        bool active = this.gameObject.GetComponent<MoveAxisConstraint>().enabled;
+        this.gameObject.GetComponent<MoveAxisConstraint>().enabled = !active;
     }
 }

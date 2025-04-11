@@ -142,7 +142,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 75}
+  m_SizeDelta: {x: 1000, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &598055184538165487
 CanvasRenderer:
@@ -1093,7 +1093,7 @@ PrefabInstance:
     - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1846984020898625930}
+      objectReference: {fileID: 3790694214693136227}
     - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -1103,8 +1103,16 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetMoveFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: ModelRowFieldUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 195190420563360910, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: m_Pivot.x
@@ -1249,6 +1257,38 @@ PrefabInstance:
       propertyPath: m_Text
       value: Scale
       objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3790694214693136227}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetScaleFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ModelRowFieldUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 195190420563360910, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1386,6 +1426,34 @@ PrefabInstance:
     - target: {fileID: 195190419895452207, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: m_Text
       value: Rotation
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3790694214693136227}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetRotateFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ModelRowFieldUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 195190420563360905, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 195190420563360910, guid: 6a448845c7017044e8a9f3d711cfe825, type: 3}
       propertyPath: m_Pivot.x

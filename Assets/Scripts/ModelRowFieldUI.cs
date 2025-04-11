@@ -35,23 +35,17 @@ public class ModelRowFieldUI : MonoBehaviour
     }
     public void SetMoveFlag()
     {
-        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
-        model.gameObject.GetComponent<ObjectManipulator>().AllowedManipulations = TransformFlags.Move;
-        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+        model.GetComponent<Model>().ApplyMoveConstraint();
     }
 
     public void SetRotateFlag()
     {
-        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
-        model.gameObject.GetComponent<ObjectManipulator>().AllowedManipulations = TransformFlags.Rotate;
-        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+        model.GetComponent<Model>().ApplyRotationConstraint();
     }
 
     public void SetScaleFlag()
     {
-        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
-        model.gameObject.GetComponent<ObjectManipulator>().AllowedManipulations = TransformFlags.Scale;
-        Debug.Log(model.GetComponent<ObjectManipulator>().AllowedManipulations);
+        model.GetComponent<Model>().ApplyScaleConstraint();
     }
     
     
