@@ -67,7 +67,7 @@ public class Model : MonoBehaviour
         if (!this.gameObject.GetComponent<RotationAxisConstraint>())
         {
             this.gameObject.AddComponent<RotationAxisConstraint>();
-            this.gameObject.AddComponent<RotationAxisConstraint>().ConstraintOnRotation = AxisFlags.XAxis + (int)AxisFlags.YAxis;
+            this.gameObject.AddComponent<RotationAxisConstraint>().ConstraintOnRotation = AxisFlags.XAxis + (int)AxisFlags.YAxis + (int)AxisFlags.ZAxis;
             this.gameObject.GetComponent<RotationAxisConstraint>().enabled = false;
         }
         

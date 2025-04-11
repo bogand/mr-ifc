@@ -112,7 +112,7 @@ IEnumerator ShowLoadDialogCoroutine()
             //gltfLoader.LoadObject(FileBrowser.Result[0]);
             //GameObject gltfObject = gltfLoader.ReturnLoadObject(FileBrowser.Result[0]);
             //attachToController.currentObject = gltfObject;
-            gltfLoader.LoadGltfToGameObject(FileBrowser.Result[0]);
+            gltfLoader.LoadGltfToGameObject(FileBrowser.Result[0],FindFirstObjectByType<Camera>().transform);
         }
         else
         {
